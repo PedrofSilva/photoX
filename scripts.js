@@ -24,4 +24,17 @@ $(document).ready(function() {
             $('.mission-text').removeClass('fromRight');
         }
     });
+
+    $('.gallery-list-item').click(function(){
+        let value = $(this).attr('data-filter');
+        if(value === 'all'){
+            $('.filter').show(1000);
+        } else {
+            $('.filter').not('.' + value).hide(1000);
+            $('.filter').filter('.' + value).show(1000);
+        }
+    });
+    $('.gallery-list-item').click(function(){
+        $(this).addClass('active-item').siblings().removeClass('active-item');
+    });
 });
