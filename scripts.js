@@ -37,7 +37,7 @@ $(document).ready(function() {
     $('.gallery-list-item').click(function(){
         $(this).addClass('active-item').siblings().removeClass('active-item');
     });
-    
+    /*
     $(window).scroll(function(){
         let position = $(this).scrollTop();
         if(position >= 4000){
@@ -49,5 +49,50 @@ $(document).ready(function() {
             $('.card-2').removeClass('moveFromBottom');
             $('.card-3').removeClass('moveFromRight');
         }
-    });
+    });*/
 });
+ $('.navbar-nav').on('click', 'a', function(){
+     $('.navbar-nav a.nav-active').removeClass('nav-active');
+     $(this).addClass('nav-active');
+ });
+
+/* Animação Scroll */
+debounce = function(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
+(function(){
+var $target = $('.animacao, .galeria-anim , .moveFromLeft , .moveFromRight , .moveFromBottom'),   
+    animationClass = 'animacao-start';
+    
+function animeScroll() {
+    var documentTop = $(document).scrollTop(),
+    offset = $(window).height() * 3/4;
+    
+    $target.each(function(){
+        var itemTop = $(this).offset().top;
+        if(documentTop > itemTop - offset) {
+            $(this).addClass(animationClass);
+        } else {
+            $(this).removeClass(animationClass);
+        }
+    });
+}
+
+animeScroll();
+
+$(document).scroll(debounce(function(){
+    animeScroll();
+}, 20));
+}());

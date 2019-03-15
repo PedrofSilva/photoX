@@ -26,9 +26,10 @@ header{
     color: #70aed2;
 }
 
-.nav-active{
+.nav-active {
     color: #70aed2;
 }
+
 
 .line1, .line2, .line3{
    width: 23px;
@@ -212,7 +213,7 @@ header{
     background: #f9793d;
     transform: translate(-2px);
 }
-
+/*
 .moveFromLeft {
     animation-name: moveFromLeft;
     animation-duration: 3s; 
@@ -227,6 +228,7 @@ header{
     animation-name: moveFromBottom;
     animation-duration: 3s; 
 }
+
 @keyframes moveFromLeft {
     0% {
         transform: translateX(-100px);
@@ -259,6 +261,9 @@ header{
         opacity: 1;
     }
 }
+
+*/
+
 /* End of Preço */
 
 /* Contact */
@@ -340,3 +345,43 @@ header{
 }
 /* End of Footer */
 
+.galeria-anim {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition:  0.3s; 
+}
+
+.animacao {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition:  0.8s;
+}
+
+/* Pricing Animation */
+.moveFromLeft {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition:  0.8s;
+}
+
+.moveFromRight {
+    transform: translateX(100px);
+    opacity: 0;
+    transition:  0.8s;
+}
+
+.moveFromBottom {
+    transform: translateY(100px);
+    opacity: 0; 
+    transition:  0.3s;
+}
+/* End of Princing Animation */
+
+
+/* animacao Sart precisa ficar no fim */
+.animacao-start {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translateY(0);
+}
+/* End of animacao Sart precisa ficar no fim */
