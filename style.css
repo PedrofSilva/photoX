@@ -318,8 +318,11 @@ header{
         background: linear-gradient(rgba(21, 31, 32, 1), rgba(21, 31, 32, 0.95))
     }
     .contact-form {
-        width: 80%;
+        width: 100%;
         margin: auto;
+    }
+    .card-list-item {
+        width: 80%;
     }
 }
 /* End of Contact */
