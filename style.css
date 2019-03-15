@@ -365,7 +365,7 @@ header{
 }
 
 .moveFromRight {
-    transform: translateX(100px);
+    transform: translateX(-100px);
     opacity: 0;
     transition:  0.8s;
 }
