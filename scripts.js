@@ -72,13 +72,14 @@ debounce = function(func, wait, immediate) {
 	};
 };
 
+
 (function(){
 var $target = $('.animacao, .galeria-anim , .moveFromLeft , .moveFromRight , .moveFromBottom'),   
     animationClass = 'animacao-start';
-    
+
 function animeScroll() {
     var documentTop = $(document).scrollTop(),
-    offset = $(window).height() * 3/4;
+    offset = $(window).height() * 4.8/5;
     
     $target.each(function(){
         var itemTop = $(this).offset().top;
@@ -87,12 +88,62 @@ function animeScroll() {
         } else {
             $(this).removeClass(animationClass);
         }
+        
     });
 }
-
 animeScroll();
 
 $(document).scroll(debounce(function(){
     animeScroll();
 }, 20));
 }());
+
+
+/*
+var $target = $('.mission'),   
+    colorClass = 'nav-active';
+
+function navActive() {
+    var documentTop = $(document).scrollTop(),
+    offset = $(window).height() * 4.8/5;
+    
+    $target.each(function(){
+        var itemTop = $(this).offset().top;
+        if(documentTop > itemTop - offset) {
+            $('.nav-1').addClass(colorClass);
+        } else {
+            $('.nav-1').removeClass(colorClass);
+        }
+    });
+}
+navActive();
+
+$(document).scroll(function(){
+    navActive();
+});
+*/
+
+           
+    function addClass(el) {
+        menu.removeClass('nav-active');
+        $(el).addClass('nav-active');
+    };
+
+    var menu = $('.nav-item a');
+    var sectionPositions = $('section').map(function(){
+        return $(this).position().top;
+    });
+    var sections = $('section');
+    $(document).on('scroll', function () {
+        var scroll = $(document).scrollTop();
+
+        var currentElement;
+        $(sectionPositions).each(function (i) {
+            if (scroll > this - 50) currentElement = menu[i];
+        });
+        currentElement && addClass(currentElement);
+    });
+    menu.on('click', function () {
+        addClass(this);
+    });
+    addClass();
